@@ -1,0 +1,22 @@
+{
+    "files.associations": {
+        "*.pv": "camllight",
+        "ecc_curveinfo.h": "c",
+        "radio.h": "c",
+        "board.h": "c",
+        "ecc-algorithms.h": "c",
+        "hw_ints.h": "c",
+        "idmanager.h": "c",
+        "uecho.h": "c",
+        "soc.h": "c",
+        "uexpiration_monitor.h": "c",
+        "keyneg.h": "c",
+        "sys_ctrl.h": "c",
+        "packetfunctions.h": "c",
+        "openserial.h": "c",
+        "sixtop.h": "c",
+        "leds.h": "c",
+        "openqueue.h": "c",
+        "pka.h": "c"
+    }
+}

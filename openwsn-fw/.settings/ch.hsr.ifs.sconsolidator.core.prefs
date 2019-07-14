@@ -1,0 +1,3 @@
+additionalCommandlineOptions=board\=openmote-b toolchain\=armgcc oos_openwsn
+ch.hsr.sconsolidator.core.BuildSettingsPreferencePage_useParentScope=false
+eclipse.preferences.version=1
