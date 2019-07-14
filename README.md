@@ -3,6 +3,7 @@
      <img alt="License" src="https://img.shields.io/static/v1.svg?label=license&message=GPL3&color=brightgreen">
      <img alt="Release" src="https://img.shields.io/static/v1.svg?label=release&message=1.0&color=blue">
      <img alt="License" src="https://img.shields.io/static/v1.svg?label=build&message=passing&color=brightgreen">
+     <img alt="Organization" src="https://img.shields.io/static/v1.svg?label=org&message=CRI-LAB&color=yellow">
 </p>
 
 LiKe is a lightweight pairing-free certificateless key agreement protocol suitable for integration in communications between IoT devices. It is developed for the standardized <a href="https://openwsn.atlassian.net/wiki/spaces/OW/overview">OpenWSN</a> protocol stack, IEEE 802.15.4e, for <a href="http://www.openmote.com/">OpenMote-b</a> devices.
