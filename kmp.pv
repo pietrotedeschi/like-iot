@@ -1,4 +1,4 @@
-(*Pietro Tedeschi - Hamad Bin Khalifa University - LiKe protocol (pietrotedeschi.me@gmail.com)*)
+(*Pietro Tedeschi - Hamad Bin Khalifa University - LiKe protocol (pietrotedeschi.me at gmail dot com)*)
 (*Dolev-Yao model Open Channels*)
 free cak:channel. (*Channel between DeviceA and DomAuth*)
 free cbk:channel. (*Channel between DeviceB and DomAuth*)
