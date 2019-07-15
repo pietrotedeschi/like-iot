@@ -25,7 +25,7 @@ The rationale of the LiKe scheme consists in the exchange of four different logi
 The flow of the interactions between a generic device *A* and a generic device *B* is depicted in the following Figure.
 
 <p align="center">
-     <img alt="Key Agreement" src="./img/key-agreement.png" width="600">
+     <img alt="Key Agreement" src="./img/key-agr.png" width="600">
 </p>
 
 * *For further details, please refer to the paper.*
