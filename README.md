@@ -164,5 +164,8 @@ In order to test the security properties, download the file `kmp.pv` and run: `p
   <img src="./img/proverif.png" alt="OpenVisualizer" width="700">
 </p>
 
+## Contributing
+Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
+
 ## License
-`LiKe` is released under the GPL 3 license.
+`LiKe` is released under the GPL 3 <a href"LICENSE.txt">license</a>.
