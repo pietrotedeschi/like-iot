@@ -158,7 +158,7 @@ Finally, for the elliptic curve parameters initialiazion, you need to put the fo
 ## Formal verification with ProVerif
 The security properties of `LiKe` have been verified formally and experimentally by using the open-source tool <a href="https://prosecco.gforge.inria.fr/personal/bblanche/proverif/">ProVerif</a>, demonstrating enhanced security protection with respect to state-of-the-art approaches.
 
-In order to test the security properties, download the file `kmp.pv` and run: `proverif kmp.pv | grep "RESULT"`:
+In order to test the security properties, download the file <a href="kmp.pv">kmp.pv</a> and run: `proverif kmp.pv | grep "RESULT"`:
 
 <p align="center">
   <img src="./img/proverif.png" alt="OpenVisualizer" width="700">
