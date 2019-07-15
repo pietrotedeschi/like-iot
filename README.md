@@ -167,8 +167,5 @@ In order to test the security properties, download the file `kmp.pv` and run: `p
 ## Contributing
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
-## Author
-<img height="32" width="32" src="https://cdn.jsdelivr.net/npm/simple-icons@latest/icons/linkedin.svg"/> <a href="https://www.linkedin.com/in/pietrotedeschi/">pietrotedeschi</a>
-
 ## License
 `LiKe` is released under the GPL 3 <a href="LICENSE">license</a>.
