@@ -23,7 +23,7 @@ free rA:bitstring [private].    (*Second partial private Key---generated from th
 free xB:bitstring [private].    (*First partial private Key---generated from the DeviceB*)
 free rB:bitstring [private].    (*Second partial private Key---generated from the DomAuth for the DeviceB*)
 
-free c:bitstring.     (*Domain Authority Private Key*)
+free c:bitstring [private].     (*Domain Authority Private Key*)
 
 (*Auxiliary Functions*)
 fun hash(bitstring):bitstring.

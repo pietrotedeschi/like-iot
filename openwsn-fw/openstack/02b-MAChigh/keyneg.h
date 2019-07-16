@@ -51,8 +51,8 @@ typedef struct
 
 // #define STATE_TABLE_SIZE      10
 // #define STATE_TABLE_OVERFLOW  25
-#define TOPOLOGY_ROOT 0xad
-#define TOPOLOGY_CHILD_1 0xba
+#define TOPOLOGY_ROOT 0xb4
+#define TOPOLOGY_CHILD_1 0xc5
 #define PROTOCOL_ID 0xcc
 
 typedef struct
@@ -98,7 +98,7 @@ typedef struct
    uint8_t sigRemote[20];
    uint8_t sigRemoteCheck[20];
    uint8_t neighbor_sig[20];
-   uint32_t LinkKey[16];
+   uint32_t LinkKey[5];
 
    //PKA parameters of the neighbor
    ECCKey neighborFirstKey;

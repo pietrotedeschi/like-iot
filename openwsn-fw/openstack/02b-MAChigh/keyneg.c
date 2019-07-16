@@ -115,7 +115,7 @@ void keyneg_init(void)
 	// Check the ID and execute the Setup Phase
 	switch (idmanager_getMyID(ADDR_64B)->addr_64b[7])
 	{
-	case TOPOLOGY_ROOT: // 0xad
+	case TOPOLOGY_ROOT:
 		//Device ID A
 
 		//This node is the ROOT
@@ -249,7 +249,7 @@ void keyneg_init(void)
 
 		//negkey_vars.waitConstant = 2;
 		break;
-	case TOPOLOGY_CHILD_1: //0xba
+	case TOPOLOGY_CHILD_1:
 						   //Device ID B
 		negkey_vars.id[0] = 0xba;
 		negkey_vars.id[1] = 0xbe;
@@ -705,14 +705,14 @@ void negkey_receive(OpenQueueEntry_t *msg)
 
 		negkey_vars.remoteRand = msg->payload[93] + msg->payload[94] * 256;
 
-		scheduler_push_task(negkey_computeDHKey, TASKPRIO_NONE);
-
 		// Receiver send the second message of the protocol
 		if (idmanager_getIsDAGroot() == TRUE && negkey_vars.m_kmpState == READY)
 		{
 			negkey_vars.last_Neighbor = msg->l2_nextORpreviousHop;
 			scheduler_push_task(send_Data, TASKPRIO_NONE);
 			openqueue_freePacketBuffer(msg);
+
+			scheduler_push_task(negkey_computeDHKey, TASKPRIO_NONE);
 			//msg->isLike = FALSE;
 
 			// Receiver change state
@@ -720,6 +720,7 @@ void negkey_receive(OpenQueueEntry_t *msg)
 		}
 		else
 		{
+			scheduler_push_task(negkey_computeDHKey, TASKPRIO_NONE);
 			scheduler_push_task(negkey_sendAuthentication, TASKPRIO_NONE);
 			openqueue_freePacketBuffer(msg);
 			//msg->isLike = FALSE;
@@ -749,7 +750,6 @@ void negkey_receive(OpenQueueEntry_t *msg)
 			openqueue_freePacketBuffer(msg);
 
 			negkey_vars.m_kmpState = READY; // restart the protocol
-			negkey_vars.myRand = openrandom_get16b();
 		}
 		else
 		{
