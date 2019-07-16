@@ -155,6 +155,13 @@ Finally, for the elliptic curve parameters initialiazion, you need to put the fo
 
 3. In your terminal you will see that both the devices will agree on same shared secret key. During the key agreement, if the key is not valid, please try to restart the child node.
 
+4. If the key is correctly negotiated, you will see on your terminal that both devices have agreed on the same symmetric key:
+
+<p align="center">
+  <img src="./img/link_key.png" alt="Link Key" width="700">
+</p>
+
+
 ## Formal verification with ProVerif
 The security properties of `LiKe` have been verified formally and experimentally by using the open-source tool <a href="https://prosecco.gforge.inria.fr/personal/bblanche/proverif/">ProVerif</a>, demonstrating enhanced security protection with respect to state-of-the-art approaches.
 
