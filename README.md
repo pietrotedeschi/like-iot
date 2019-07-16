@@ -14,7 +14,7 @@ Without loss of generality, we assume that some cryptographic elements are pre-c
 In the pre-deployment phase, each device participating in the system interacts securely with the Domain Authority, to receive dedicated cryptography elements. The flow of the interactions between the Domain Authority and a generic device *i* is depicted in the following Figure.
 
 <p align="center">
-     <img alt="Setup Phase" src="./img/key-kgc.png" width="600">
+     <img alt="Setup Phase" src="./img/key-kgc.png" width="500">
 </p>
 
 The rationale of the LiKe scheme consists in the exchange of four different logical messages, two per each involved device.
@@ -25,7 +25,7 @@ The rationale of the LiKe scheme consists in the exchange of four different logi
 The flow of the interactions between a generic device *A* and a generic device *B* is depicted in the following Figure.
 
 <p align="center">
-     <img alt="Key Agreement" src="./img/key-agr.png" width="600">
+     <img alt="Key Agreement" src="./img/key-agr.png" width="500">
 </p>
 
 * *For further details, please refer to the paper.*
