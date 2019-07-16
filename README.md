@@ -155,10 +155,10 @@ Finally, for the elliptic curve parameters initialiazion, you need to put the fo
 
 3. In your terminal you will see that both the devices will agree on same shared secret key. During the key agreement, if the key is not valid, please try to restart the child node.
 
-4. If the key is correctly negotiated, you will see on your terminal that both devices have agreed on the same symmetric key:
+4. If the key is correctly negotiated, you will see on your terminal that both devices have agreed on the same symmetric key. An example of the first bytes of the `Link Key` is depicted as following:
 
 <p align="center">
-  <img src="./img/link_key.png" alt="Link Key" width="700">
+  <img src="./img/link_key.png" alt="Link Key" width="600">
 </p>
 
 
