@@ -85,6 +85,23 @@ void keyneg_init(void)
 	negkey_vars.nist_p_160_my.pui32Prime = &nist_p_160_p; // prime number p of the curve
 	negkey_vars.nist_p_160_my.ui8Size = 5;				  // size of the words for secp160r1
 
+	
+	//	negkey_vars.nist_p_192_2.pui32A     = &nist_p_192_a2;		// a coefficient on the curve
+	//	negkey_vars.nist_p_192_2.pui32B     = &nist_p_192_b2;		// b coefficient on the curve
+	//	negkey_vars.nist_p_192_2.pui32Gx    = &nist_p_192_x2;		// x coefficient on the generator point G for the curve
+	//	negkey_vars.nist_p_192_2.pui32Gy    = &nist_p_192_y2;		// y coefficient on the generator point G for the curve
+	//	negkey_vars.nist_p_192_2.pui32N     = &nist_p_192_n2;		// order of the cyclic group #E(Zp)
+	//	negkey_vars.nist_p_192_2.pui32Prime = &nist_p_192_p2;	    // prime number p of the curve
+	//	negkey_vars.nist_p_192_2.ui8Size = 6;			            // size of the words for secp160r1
+	
+	//	negkey_vars.nist_p_256_2.pui32A = &nist_p_256_a2;		// a coefficient on the curve
+	//	negkey_vars.nist_p_256_2.pui32B = &nist_p_256_b2;		// b coefficient on the curve
+	//	negkey_vars.nist_p_256_2.pui32Gx = &nist_p_256_x2;		// x coefficient on the generator point G for the curve
+	//	negkey_vars.nist_p_256_2.pui32Gy = &nist_p_256_y2;		// y coefficient on the generator point G for the curve
+	//	negkey_vars.nist_p_256_2.pui32N = &nist_p_256_n2;		// order of the cyclic group #E(Zp)
+	//	negkey_vars.nist_p_256_2.pui32Prime = &nist_p_256_p2;	// prime number p of the curve
+	//	negkey_vars.nist_p_256_2.ui8Size = 8;			// size of the words for secp160r1
+
 	negkey_vars.curve_info = &negkey_vars.nist_p_160_my;
 
 	// Domain Authority private key (c)
@@ -725,7 +742,6 @@ void negkey_receive(OpenQueueEntry_t *msg)
 			openqueue_freePacketBuffer(msg);
 			//msg->isLike = FALSE;
 			negkey_vars.m_kmpState = SECOND_FRAG;
-			//Inviare Authentication Tag
 		}
 
 		break;
@@ -735,7 +751,7 @@ void negkey_receive(OpenQueueEntry_t *msg)
 		{
 			negkey_vars.sigRemote[j - 1] = msg->payload[j];
 		}
-		//Controllare Authentication Tag
+		// Check Authentication Tag
 		if (negkey_checkAuth() == E_SUCCESS)
 		{
 			//Compute Session Link Key
@@ -749,7 +765,7 @@ void negkey_receive(OpenQueueEntry_t *msg)
 			scheduler_push_task(negkey_sendAuthentication, TASKPRIO_NONE);
 			openqueue_freePacketBuffer(msg);
 
-			negkey_vars.m_kmpState = READY; // restart the protocol
+			negkey_vars.m_kmpState = READY; // Restart the protocol
 		}
 		else
 		{
