@@ -57,8 +57,8 @@ query attacker(xB).
 query attacker(pA).
 query attacker(pB).
 
-(*Test the Authenticity Phase with the KGC*)
-(*query u:bitstring,v:bitstring; event(endADomAuth(u,v)) ==> event(beginDomAuthA(u,v)).
+(*Test the Authenticity Phase with the KGC
+query u:bitstring,v:bitstring; event(endADomAuth(u,v)) ==> event(beginDomAuthA(u,v)).
 query u:bitstring,v:bitstring; event(endBDomAuth(u,v)) ==> event(beginDomAuthB(u,v)).*)
 
 (*A authenticates B*)
