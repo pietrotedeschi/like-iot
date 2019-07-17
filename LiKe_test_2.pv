@@ -17,13 +17,14 @@ type lk.            (*Link Key*)
 
 free G:bitstring.               (*Generator point of the Elliptic Curve*)
 
-free xA:bitstring [private].    (*First partial private Key---generated from the DeviceA*)
-free rA:bitstring [private].    (*Second partial private Key---generated from the DomAuth for the DeviceA*)
+free xA:bitstring[private].    (*First partial private Key---generated from the DeviceA*)
+free rA:bitstring[private].    (*Second partial private Key---generated from the DomAuth for the DeviceA*)
 
-free xB:bitstring [private].    (*First partial private Key---generated from the DeviceB*)
-free rB:bitstring [private].    (*Second partial private Key---generated from the DomAuth for the DeviceB*)
+free xB:bitstring[private].    (*First partial private Key---generated from the DeviceB*)
+free rB:bitstring[private].    (*Second partial private Key---generated from the DomAuth for the DeviceB*)
 
-free c:bitstring.     (*Domain Authority Private Key*)
+free pA:bitstring.
+free pB:bitstring.
 
 (*Auxiliary Functions*)
 fun hash(bitstring):bitstring.
@@ -43,27 +44,28 @@ event endBDomAuth(bitstring,bitstring).
 event beginDomAuthA(bitstring,bitstring).
 event beginDomAuthB(bitstring,bitstring).
 
-event begin_LiKe_B(bitstring,bitstring,bitstring,bitstring,nonce,bitstring,bitstring).
-event begin_LiKe_A(bitstring,bitstring,bitstring,bitstring,nonce,bitstring,bitstring).
+event begin_LiKe_B(bitstring,bitstring,bitstring,bitstring,nonce).
+event begin_LiKe_A(bitstring,bitstring,bitstring,bitstring,nonce).
 
 event end_LiKe_A(lk). (*A ends the protocol with B*)
 event end_LiKe_B(lk). (*B ends the protocol with A*)
 
 
 (*Attack Model*)
-query attacker(c).
 query attacker(xA).
 query attacker(xB).
+query attacker(pA).
+query attacker(pB).
 
 (*Test the Authenticity Phase with the KGC*)
 (*query u:bitstring,v:bitstring; event(endADomAuth(u,v)) ==> event(beginDomAuthA(u,v)).
 query u:bitstring,v:bitstring; event(endBDomAuth(u,v)) ==> event(beginDomAuthB(u,v)).*)
 
 (*A authenticates B*)
-query x:lk, u:bitstring, v:bitstring, y:bitstring, w:bitstring, n:nonce, a:bitstring, b:bitstring; inj-event(end_LiKe_B(x))==>inj-event(begin_LiKe_A(u,v,y,w,n,a,b)).
+query x:lk, u:bitstring, v:bitstring, y:bitstring, w:bitstring, n:nonce; inj-event(end_LiKe_B(x))==>inj-event(begin_LiKe_A(u,v,y,w,n)).
 
 (*B authenticates A*)
-query x:lk, u:bitstring, v:bitstring, y:bitstring, w:bitstring, n:nonce, a:bitstring, b:bitstring; inj-event(end_LiKe_A(x))==>inj-event(begin_LiKe_B(u,v,y,w,n,a,b)).
+query x:lk, u:bitstring, v:bitstring, y:bitstring, w:bitstring, n:nonce; inj-event(end_LiKe_A(x))==>inj-event(begin_LiKe_B(u,v,y,w,n)).
 
 (*Process userA*)
 let DeviceA(Cpub:bitstring) =
@@ -80,13 +82,14 @@ event endADomAuth(XpA,PvA);
 (*Key Generation Phase of DeviceA*)
 new nA:nonce;
 out(cab,(IDA,TsA,PvA,XPA,nA));
+
 in(cab,(IDXB:bitstring,TsXB:bitstring, XPvB:bitstring, XXPB:bitstring, nXB:nonce));
+(*A believes it started the protocol with B*)
+event begin_LiKe_B(IDXB,TsXB,XPvB,XXPB,nXB);
 if IDXB = IDB then
 let KAB1 = mul(XpA,add(XXPB,mul(hash(append(IDXB,append(TsXB,append(XPvB,XXPB)))),Cpub))) in
-let KAB2 = mul(XpA,XPvB) in
+let KAB2 = mul(xA,XPvB) in
 
-(*A believes it started the protocol with B*)
-event begin_LiKe_B(IDXB,TsXB,XPvB,XXPB,nXB,KAB1,KAB2);
 let skAB = kdf(get_shared_key(KAB1,KAB2)) in
 
 let sigmA = hmac(skAB,(IDA,TsA,PvA,XPA,IDXB,TsXB,XPvB,XXPB,nA,nXB)) in
@@ -113,12 +116,11 @@ event endBDomAuth(XpB,PvB);
 
 (*Key Generation Phase of DeviceB*)
 in(cab,(IDXA:bitstring,TsXA:bitstring, XPvA:bitstring, XXPA:bitstring, nXA:nonce));
+(*B believes it started the protocol with A*)
+event begin_LiKe_A(IDXA,TsXA,XPvA,XXPA,nXA);
 if IDXA = IDA then
 let KBA1 = mul(XpB,add(XXPA,mul(hash(append(IDXA,append(TsXA,append(XPvA,XXPA)))),Cpub))) in
-let KBA2 = mul(XpB,XPvA) in
-
-(*B believes it started the protocol with A*)
-event begin_LiKe_A(IDXA,TsXA,XPvA,XXPA,nXA,KBA1,KBA2);
+let KBA2 = mul(xB,XPvA) in
 
 let skBA = kdf(get_shared_key(KBA1,KBA2)) in
 new nB:nonce;
@@ -132,7 +134,6 @@ if sigmAX = sigmAV then
     let lkBA = get_link_key(append(KBA1,KBA2),nXA,nB) in
     (*Compute Link Key*)
 event end_LiKe_B(lkBA).
-
 
 (*Process DomAuth*)
 let DomAuth(c:bitstring, Cpub:bitstring) =
@@ -151,6 +152,7 @@ event beginDomAuthB(pB,PvXB);
 out(cbk,(PB,pB)).
 
 process
+    new c:bitstring;
     let Cpub = mul(c,G) in                              (*Domain Authority Public Key*)
     out(cak,Cpub);
     out(cbk,Cpub);
