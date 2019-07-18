@@ -1,4 +1,4 @@
-## LiKe: Lightweight Certificateless Key AgreementScheme for IoT Communications
+## LiKe: Lightweight Certificateless Key Agreement Scheme for IoT
 <p align="center">
      <img alt="License" src="https://img.shields.io/static/v1.svg?label=license&message=GPL3&color=brightgreen">
      <img alt="Release" src="https://img.shields.io/static/v1.svg?label=release&message=1.0&color=blue">
