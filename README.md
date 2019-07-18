@@ -6,7 +6,8 @@
      <img alt="Organization" src="https://img.shields.io/static/v1.svg?label=org&message=CRI-LAB&color=blue">
 </p>
 
-LiKe is a lightweight pairing-free certificateless key agreement protocol suitable for integration in communications between IoT devices. It is developed for the standardized <a href="https://openwsn.atlassian.net/wiki/spaces/OW/overview">OpenWSN</a> protocol stack, IEEE 802.15.4e, for <a href="http://www.openmote.com/">OpenMote-b</a> devices.
+LiKe is a lightweight pairing-free certificateless key agreement protocol suitable for integration in communications between IoT devices.
+It is developed within the widespread <a href="https://openwsn.atlassian.net/wiki/spaces/OW/overview">OpenWSN</a> protocol stack, integrating the standardized IEEE 802.15.4-2015 MAC layer, and tested in <a href="http://www.openmote.com/">OpenMote-b</a> devices.
 
 ## How it works
 Without loss of generality, we assume that some cryptographic elements are pre-configured in each device by the network administrator before the physical deployment.
