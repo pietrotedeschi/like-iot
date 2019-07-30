@@ -176,4 +176,4 @@ In order to test the security properties, download the file <a href="LiKe_test_1
 Pull requests are welcome. For major changes, please open an issue first to discuss what you would like to change.
 
 ## License
-`LiKe` is released under the GPL 3 <a href="LICENSE">license</a>.
+`LiKe` is released under the BSD 3-Clause <a href="LICENSE">license</a>.
