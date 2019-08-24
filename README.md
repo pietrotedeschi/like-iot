@@ -162,6 +162,7 @@ Finally, for the elliptic curve parameters initialiazion, you need to put the fo
   <img src="./img/link_key.png" alt="Link Key" width="600">
 </p>
 
+Indeed, `b5b4` (the first IoT device) and `b5c5` (the second IoT device) negotiated the same Link Key. Indeed, for each device, you can verify that the `security error frametype [BYTES]` are the same at the same `code location` (it means that we have a symmetric key).
 
 ## Formal verification with ProVerif
 The security properties of `LiKe` have been verified formally and experimentally by using the open-source tool <a href="https://prosecco.gforge.inria.fr/personal/bblanche/proverif/">ProVerif</a>, demonstrating enhanced security protection with respect to state-of-the-art approaches.
