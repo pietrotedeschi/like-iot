@@ -29,7 +29,7 @@ The flow of the interactions between a generic device *A* and a generic device *
      <img alt="Key Agreement" src="./img/key-agr.png" width="500">
 </p>
 
-* *For further details, please refer to the paper.*
+* *For further details, please refer to the <a href="https://ieeexplore.ieee.org/document/8901222">paper</a>.*
 
 ## How to compile the code
 
