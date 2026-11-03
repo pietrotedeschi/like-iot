@@ -1,5 +1,5 @@
 PyDispatcher
-pylint==1.6.0
+pylint==4.0.9
 pycryptodome
 cbor
 hkdf
